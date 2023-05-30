@@ -12,9 +12,9 @@ const Popup = () => {
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     
-    const handleTextChange = (value: string) => {
-        setText(value);
-    };
+    // const handleTextChange = (value: string) => {
+    //     setText(value);
+    // };
     const openModal = (text: string) => {
         if (text === 'pictures') {
             setText('pictures');
