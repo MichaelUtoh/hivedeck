@@ -32,9 +32,9 @@ const Popup = () => {
     const handleClickBtn = () => {
         setClickBtn(!clickBtn);
     }
-    const addImageFunc = () => {}
-    const addVideoFunc = () => {}
-    const addLinkFunc = () => {}
+    // const addImageFunc = () => {}
+    // const addVideoFunc = () => {}
+    // const addLinkFunc = () => {}
 
     return (
         <div className="flex flex-col h-[32vh] justify-start my-[10px] px-2">
