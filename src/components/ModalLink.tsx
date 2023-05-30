@@ -40,7 +40,7 @@ const ModalLink: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
         <div className='px-3'>
           <div className='flex flex-col h-[56px] my-4 w-[611px]'>
             <label className="mb-2 social-media text-[10px] uppercase">Social Media</label>
-            <select onChange={(e) => handleProviderInput(e)} className='border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="social-media" id="">
+            <select onChange={(e) => handleProviderInput(e)} className='bg-[#FAFAFA] border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="social-media" id="">
               <option value=''>Select a provider</option>
               {
                 socials.map((obj, idx) => (
@@ -52,12 +52,12 @@ const ModalLink: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
 
           <div className='flex flex-col h-[56px] my-4 w-[611px]'>
             <label className="mb-2 social-media text-[10px] uppercase">url</label>
-            <input onChange={(e) => setUrl(e.target.value)} className='border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="url" placeholder='' id="" />
+            <input onChange={(e) => setUrl(e.target.value)} className='bg-[#FAFAFA] border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="url" placeholder='' id="" />
           </div>
 
           <div className='flex flex-col h-[56px] my-4 w-[611px]'>
             <label className="mb-2 social-media text-[10px] uppercase">Code</label>
-            <input onChange={(e) => setCode(e.target.value)} className='border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="code" placeholder='' id="" />
+            <input onChange={(e) => setCode(e.target.value)} className='bg-[#FAFAFA] border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="code" placeholder='' id="" />
           </div>
 
           <div className='mb-2 flex items-center justify-between'>

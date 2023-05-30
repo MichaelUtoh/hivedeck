@@ -38,7 +38,7 @@ const ModalVideo: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
 
         <div className='flex flex-col h-[56px] mx-3 my-4 w-[611px]'>
           <label className="mb-2 social-media text-[10px] uppercase">Video provider</label>
-          <select onChange={handleProviderInput} className='border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="social-media" id="">
+          <select onChange={handleProviderInput} className='bg-[#FAFAFA] border border-gray-200 h-[34px] outline-gray-300 px-2 text-[12px]' name="social-media" id="">
             <option>Select a provider</option>
             {
               socials.map((obj, idx) => (
