@@ -1,5 +1,5 @@
 import ReactModal from 'react-modal';
-import ReactQuill, { Quill } from 'react-quill';
+// import ReactQuill, { Quill } from 'react-quill';
 import { useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
@@ -10,7 +10,7 @@ interface ModalProps {
 
 const ModalPicture: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
 
-  const quillRef = useRef<ReactQuill>(null);
+  // const quillRef = useRef<ReactQuill>(null);
   const ref = useRef<HTMLInputElement>(null);
   const file = ref.current?.files?.[0];
   console.log(file);
@@ -18,18 +18,18 @@ const ModalPicture: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
       if (file) {
-        const quill = quillRef.current?.getEditor();
-        if (quill) {
-          const range = quill.getSelection();
-          if (range) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              quill.insertEmbed(range.index, 'image', e.target?.result);
-              quill.setSelection(range.index + 1, Quill.sources.SILENT);
-            };
-            reader.readAsDataURL(file);
-          }
-        }
+        // const quill = quillRef.current?.getEditor();
+        // if (quill) {
+        //   const range = quill.getSelection();
+        //   if (range) {
+        //     const reader = new FileReader();
+        //     reader.onload = (e) => {
+        //       quill.insertEmbed(range.index, 'image', e.target?.result);
+        //       quill.setSelection(range.index + 1, Quill.sources.SILENT);
+        //     };
+        //     reader.readAsDataURL(file);
+        //   }
+        // }
       }
     };
 
