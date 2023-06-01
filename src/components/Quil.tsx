@@ -25,6 +25,7 @@ const Quil = ({onValueFromChild}: ChildProps) => {
             }
         };
         reader.readAsDataURL(file);
+        console.log(file);
     };
 
     const modules = {
@@ -45,7 +46,7 @@ const Quil = ({onValueFromChild}: ChildProps) => {
     };
     
     return (
-        <div className='grow relative'>
+        <div className='grow relative'>editoe
             <p className='article-title my-4'>This is the title</p>
             <ReactQuil
                 preserveWhitespace={true}
