@@ -46,7 +46,7 @@ const Quil = ({onValueFromChild}: ChildProps) => {
     console.log(file);
     
     return (
-        <div className='grow relative'>editoe
+        <div className='grow relative'>
             <p className='article-title my-4'>This is the title</p>
             <ReactQuil
                 preserveWhitespace={true}
