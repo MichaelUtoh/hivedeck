@@ -25,7 +25,6 @@ const Quil = ({onValueFromChild}: ChildProps) => {
             }
         };
         reader.readAsDataURL(file);
-        console.log(file);
     };
 
     const modules = {
@@ -44,6 +43,7 @@ const Quil = ({onValueFromChild}: ChildProps) => {
         onValueFromChild(words.length);
         return words.length;
     };
+    console.log(file);
     
     return (
         <div className='grow relative'>editoe
