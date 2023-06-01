@@ -7,14 +7,20 @@ import ModalVideo from './ModalVideo';
 import ModalLink from './ModalLink';
 
 
-const Popup = () => {
+interface PopupComponentProps {
+    onFileChange: (file: File) => void;
+}
+
+
+const Popup: React.FC<PopupComponentProps> = ({onFileChange}) => {
     const [clickBtn, setClickBtn] = useState(false);
     const [text, setText] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    
-    // const handleTextChange = (value: string) => {
-    //     setText(value);
-    // };
+
+    const handleFileChange = (file: File) => {
+        onFileChange(file)
+    };
+
     const openModal = (text: string) => {
         if (text === 'pictures') {
             setText('pictures');
@@ -26,18 +32,16 @@ const Popup = () => {
         setIsModalOpen(true);
         setClickBtn(!clickBtn)
     };
+
     const closeModal = () => {
         setIsModalOpen(false);
     };
     const handleClickBtn = () => {
         setClickBtn(!clickBtn);
     }
-    // const addImageFunc = () => {}
-    // const addVideoFunc = () => {}
-    // const addLinkFunc = () => {}
 
     return (
-        <div className="flex flex-col h-[32vh] justify-start my-[10px] px-2">
+        <div className="absolute flex flex-col h-[32vh] justify-start my-[10px] px-2">
             <div
                 onClick={handleClickBtn}
                 className="bg-[#E7F1E9] cursor-pointer flex items-center justify-center w-[30px] mb-1 ml-2 p-2 px-5 rounded-full"
@@ -47,7 +51,7 @@ const Popup = () => {
 
             { 
                 clickBtn &&
-                <div className="popup-select-box">
+                <div className="bg-white w-[300px]">
                     <p className='text-[14px] font-thin uppercase' style={{marginBottom: '2px', padding: '3px 15px'}}>Embeds</p>
                     <div className="btn" onClick={() => openModal('pictures')}>
                         <AiFillPicture className='icons' />
@@ -60,7 +64,7 @@ const Popup = () => {
                         <FaVideo className='icons' />
                         <span className='popup-category'>
                             <span className='popup-category-title text-[12px]'>Video</span>
-                            <span className='popup-category-sm text-[8px]'>JW player, Youtube, Vimeo</span>
+                            <span className='popup-category-sm text-[8px]'>Youtube, Vimeo</span>
                         </span>
                     </p>
                     <p className="btn" onClick={() => openModal('links')}>
@@ -72,7 +76,7 @@ const Popup = () => {
                     </p>
                 </div>
             }
-            {text === 'pictures' && <ModalPicture isOpen={isModalOpen} onRequestClose={closeModal} />}
+            {text === 'pictures' && <ModalPicture isOpen={isModalOpen} onRequestClose={closeModal} onFileChange={handleFileChange} />}
             {text === 'videos' && <ModalVideo isOpen={isModalOpen} onRequestClose={closeModal} />}
             {text === 'links' && <ModalLink isOpen={isModalOpen} onRequestClose={closeModal} />}
         </div>

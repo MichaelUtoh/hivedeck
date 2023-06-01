@@ -19,8 +19,8 @@ const ModalVideo: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
   }
 
   const handleSubmit = () => {
-    console.log(provider);
-    console.log(url);
+    // console.log(provider);
+    // console.log(url);
   }
 
   return (

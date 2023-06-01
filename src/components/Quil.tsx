@@ -1,15 +1,32 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import ReactQuil from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
+import Popup from './Popup';
 
 interface ChildProps {
     onValueFromChild: (value: number) => void;
+    // onFileChange: (file: File) => void;
 }
 
-
 const Quil = ({onValueFromChild}: ChildProps) => {
-
+    const quillRef = useRef<ReactQuil>(null);
+    const [file, setFile] = useState<File | null>(null);
     const [value, setValue] = useState('');
+    const handleFileChange = (file: File) => {
+        setFile(file)
+        const reader = new FileReader();
+        reader.onload = () => {
+            console.log(file);
+            const dataUrl = reader.result as string;
+            const quill = quillRef.current?.getEditor();
+            if (quill) {
+            const range = quill.getSelection();
+            quill.insertEmbed(range?.index || 0, 'image', dataUrl, 'user');
+            }
+        };
+        reader.readAsDataURL(file);
+    };
+
     const modules = {
         toolbar: [
           [{ 'header': [1, 2, false] }],
@@ -26,9 +43,9 @@ const Quil = ({onValueFromChild}: ChildProps) => {
         onValueFromChild(words.length);
         return words.length;
     };
-
+    
     return (
-        <div className='top-wrapper'>
+        <div className='grow relative'>
             <p className='article-title my-4'>This is the title</p>
             <ReactQuil
                 preserveWhitespace={true}
@@ -36,10 +53,11 @@ const Quil = ({onValueFromChild}: ChildProps) => {
                 theme="snow"
                 modules={modules}
                 value={value}
+                ref={(quillRef)}
                 onChange={setValue}
-                // onValueFromChild={}
             />
             <p className='hidden'>{getWordCount()}</p>
+            <Popup onFileChange={handleFileChange} />
         </div>
     )
 }

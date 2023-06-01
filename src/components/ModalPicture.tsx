@@ -6,40 +6,26 @@ import { FaTimes } from 'react-icons/fa';
 interface ModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
+  onFileChange: (file: File) => void;
 }
 
-const ModalPicture: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
+const ModalPicture: React.FC<ModalProps> = ({ isOpen, onRequestClose, onFileChange }) => {
 
-  // const quillRef = useRef<ReactQuill>(null);
   const ref = useRef<HTMLInputElement>(null);
-  const file = ref.current?.files?.[0];
-  console.log(file);
   
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-      if (file) {
-        // const quill = quillRef.current?.getEditor();
-        // if (quill) {
-        //   const range = quill.getSelection();
-        //   if (range) {
-        //     const reader = new FileReader();
-        //     reader.onload = (e) => {
-        //       quill.insertEmbed(range.index, 'image', e.target?.result);
-        //       quill.setSelection(range.index + 1, Quill.sources.SILENT);
-        //     };
-        //     reader.readAsDataURL(file);
-        //   }
-        // }
-      }
-    };
+  const handleFileChange = () => {
+    const file = ref.current?.files?.[0];
+    if (file) {
+      onFileChange(file);
+      onRequestClose();
+    }
+  };
 
   return (
     <ReactModal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Modal"
-      // Customize the modal's styles if needed
-      // overlayClassName="custom-overlay"
       className="custom-modal bg-[#a1a1aa]"
     >
       <div className='bg-white rounded-md p-3'>
